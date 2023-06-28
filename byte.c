@@ -9,7 +9,7 @@
 #define BUFFER_SIZE 1024
 #define TOKEN_DELIMITERS " \t\r\n\a"
 
-// Function declarations
+// Core Function declarations
 void shell_loop();
 char* read_line();
 char** split_line(char* line);
@@ -91,7 +91,7 @@ char** split_line(char* line) {
     char* token;
 
     if (!tokens) {
-        fprintf(stderr, "Allocation error\n");
+        fprintf(stderr, "Byteshell : allocation error\n");
         exit(EXIT_FAILURE);
     }
 
@@ -115,6 +115,7 @@ char** split_line(char* line) {
 
 char* command_history[BUFFER_SIZE];
 int history_count = 0;
+
 // Execute
 int execute_command(char** args) {
     if (args[0] == NULL) {
@@ -142,7 +143,7 @@ int launch_process(char** args) {
     pid = fork();
     if (pid == 0) {
         if (execvp(args[0], args) == -1) {
-            perror("byteshell");
+            perror("byteshell_launch");
         }
         exit(EXIT_FAILURE);
     } else if (pid < 0) {
@@ -162,7 +163,7 @@ int shell_cd(char** args) {
         fprintf(stderr, "Expected argument to \"cd\"\n");
     } else {
         if (chdir(args[1]) != 0) {
-            perror("byteshell");
+            perror("byteshell_cd");
         }
     }
     return 1;
@@ -186,7 +187,7 @@ int shell_exit(char** args) {
 
 // Built-in command: help
 int shell_help(char** args) {
-    printf("--------ByteShell--------\n");
+    printf("--------ByteShell💲--------\n");
     printf("  -> Supported built-in commands:\n");
     printf("  -> cd <directory> - Change the current directory\n");
     printf("  -> pwd - Print the current working directory\n");
@@ -242,7 +243,7 @@ int shell_ls(char** args) {
     return 1;
 }
 
-// Built-in command: touch
+// Built-in command: touch   // builtin touch seems to not work had to use fopen
 int shell_touch(char** args) {
     int i = 1;
     while (args[i] != NULL) {
@@ -270,3 +271,10 @@ int main() {
     shell_loop();
     return EXIT_SUCCESS;
 }
+
+/* References : 
+    ACM sessions
+    javatpoint.com
+    https://www.dmulholl.com/lets-build/a-command-line-shell.html
+    geeksforgeeks
+*/
