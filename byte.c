@@ -188,7 +188,7 @@ int shell_exit(char** args) {
 // Built-in command: help
 int shell_help(char** args) {
     printf("--------ByteShell💲--------\n");
-    printf("  -> Supported built-in commands:\n");
+    printf("     Supported built-in commands:\n");
     printf("  -> cd <directory> - Change the current directory\n");
     printf("  -> pwd - Print the current working directory\n");
     printf("  -> exit - Exit the shell\n");
