@@ -21,7 +21,7 @@ once installed check
 git clone https://github.com/ZEUS77-dev/Byteshell
 ```
 
-<p>2. cd to the directory then </p>
+<p>2. cd to the repository location then </p>
 
 ```bash
 cc -o byte byte.c
