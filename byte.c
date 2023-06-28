@@ -215,6 +215,50 @@ int shell_echo(char** args) {
     return 1;
 }
 
+// Built-in command: ls
+int shell_ls(char** args) {
+    DIR *dir;
+    struct dirent *entry;
+
+    if (args[1] == NULL) {
+        dir = opendir(".");
+    } else {
+        dir = opendir(args[1]);
+    }
+
+    if (dir == NULL) {
+        perror("opendir");
+        return 1;
+    }
+
+    while ((entry = readdir(dir)) != NULL) {
+        printf("%s\n", entry->d_name);
+    }
+
+    closedir(dir);
+    return 1;
+}
+
+// Built-in command: touch
+int shell_touch(char** args) {
+    int i = 1;
+    while (args[i] != NULL) {
+        if (touch(args[i]) != 0) {
+            perror("touch");
+        }
+        i++;
+    }
+    return 1;
+}
+
+// Built-in command: date
+int shell_date(char** args) {
+    time_t current_time;
+    time(&current_time);
+    printf("Current time: %s", ctime(&current_time));
+    return 1;
+}
+
 // Entry point
 int main() {
     shell_loop();
