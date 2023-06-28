@@ -65,7 +65,7 @@ void shell_loop() {
     int status;
 
     do {
-        printf("> ");
+        printf("By8💲hell> ");
         line = read_line();
         args = split_line(line);
         status = execute_command(args);
