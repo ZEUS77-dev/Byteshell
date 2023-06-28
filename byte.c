@@ -194,6 +194,9 @@ int shell_help(char** args) {
     printf("  -> help - Display this help message\n");
     printf("  -> history - Display the command history\n");
     printf("  -> echo - Display a line of string/text passed as the arguments.\n");
+    printf("  -> ls - list all files in the dir\n");
+    printf("  -> touch - create new empty file \n");
+    printf("  -> date - Display date time \n");
     return 1;
 }
 
@@ -243,8 +246,11 @@ int shell_ls(char** args) {
 int shell_touch(char** args) {
     int i = 1;
     while (args[i] != NULL) {
-        if (touch(args[i]) != 0) {
+        FILE* file = fopen(args[i], "w");
+        if (file == NULL) {
             perror("touch");
+        } else {
+            fclose(file);
         }
         i++;
     }
