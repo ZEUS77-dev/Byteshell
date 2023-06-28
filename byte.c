@@ -26,6 +26,7 @@ int shell_echo(char** args);
 int shell_ls(char** args);
 int shell_touch(char** args);
 int shell_date(char** args);
+int shell_clear(char** args);
 
 // Array of built-in commands
 char* built_in_commands[] = {
