@@ -18,16 +18,16 @@ once installed check
 <p>1. Clone the repository or download the zip</p>
 
 ```bash
-        git clone https://github.com/ZEUS77-dev/Byteshell
+git clone https://github.com/ZEUS77-dev/Byteshell
 ```
 
 <p>2. cd to the directory then </p>
 
 ```bash
-        cc -o byte byte.c
+cc -o byte byte.c
 ```
 ```bash
-        ./byte
+./byte
 ```
 
 
