@@ -37,7 +37,8 @@ char* built_in_commands[] = {
     "echo",
     "ls",
     "touch",
-    "date"
+    "date",
+    "clear"
 };
 
 // Array of built-in command functions
@@ -50,7 +51,8 @@ int (*built_in_functions[])(char**) = {
     &shell_echo,
     &shell_ls,
     &shell_touch,
-    &shell_date
+    &shell_date,
+    &shell_clear
 };
 
 // Get the number of built-in commands
@@ -263,6 +265,12 @@ int shell_date(char** args) {
     time_t current_time;
     time(&current_time);
     printf("Current time: %s", ctime(&current_time));
+    return 1;
+}
+
+// Built-in command: clear
+int shell_clear(char** args) {
+    printf("\033[2J\033[H");  // ANSI escape sequence to clear screen
     return 1;
 }
 
