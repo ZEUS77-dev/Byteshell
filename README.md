@@ -31,5 +31,21 @@ cc -o byte byte.c
 ```
 
 
+###Implemented Built-itns 
+
+    cd
+    pwd
+    exit
+    help
+    history
+    echo
+    ls
+    touch
+    date
+    clear
+
+
+
+
 
         
