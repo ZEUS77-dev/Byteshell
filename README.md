@@ -31,7 +31,7 @@ cc -o byte byte.c
 ```
 
 
-### Implemented Built-itns 
+### Implemented Built-ins 
 
     cd
     pwd
